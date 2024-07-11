@@ -1,0 +1,70 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    {% load static %}
+    <div class="jumbotron">
+        <h1 class="display-4 typewriter-text"></h1>
+        <p class="lead typewriter-text"></p>
+        <hr class="my-4">
+        <p class="typewriter-text"></p>
+    </div>
+<style>
+               .typewriter-text {
+        font-family: 'Courier New', Courier, monospace; /* Optional: Use a monospaced font for typewriter effect */
+        white-space: nowrap; /* Optional: Prevent text from wrapping */
+        overflow: hidden; /* Optional: Hide overflow text */
+    }
+
+    .typewriter-text::after {
+        content: '|'; /* Create a cursor */
+        display: inline-block;
+        width: 0; /* Start with cursor hidden */
+        animation: blink-caret 1s step-end infinite;
+    }
+
+    @keyframes typewriter {
+        from { width: 0 }
+        to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: orange }
+    }
+    </style>
+    <script>
+        // JavaScript code (as shown above)
+        const elements = document.querySelectorAll('.typewriter-text'); // Select all elements with class 'typewriter-text'
+
+// Messages for each element
+const messages = [
+    "Welcome to My Portfolio.",
+    "Hi, I'm Miroslav Adamaic. I am a keen learner transitioning into Data Science and IT.",
+    "Here you'll find information about my experience and skills."
+];
+
+function typeWriter(element, message, index, delay) {
+    setTimeout(() => {
+        let charIndex = 0;
+        const interval = setInterval(() => {
+            element.textContent += message[charIndex];
+            charIndex++;
+            // Check if we've reached the end of the message
+            if (charIndex === message.length) {
+                clearInterval(interval); // Stop typing when the end of message is reached
+                // Move to the next typewriter element
+                if (index < elements.length - 1) {
+                    setTimeout(() => {
+                        typeWriter(elements[index + 1], messages[index + 1], index + 1, delay);
+                    }, 500); // Adjust the delay before starting the next element
+                }
+            }
+        }, 50); // Adjust the speed of typing here (milliseconds per character)
+    }, delay); // Delay before starting typing (staggered effect)
+}
+
+// Start typing the first element
+typeWriter(elements[0], messages[0], 0, 200);
+
+    </script>
+{% endblock %}

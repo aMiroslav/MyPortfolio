@@ -1,0 +1,16 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    {% load static %}
+<h1>Certificates</h1>
+<p>I am very excited to have an ability of continuous learning.</p>
+<p>I am always very keen on learning new and more. Here are examples of my latest courses I was interested in.</p>
+
+<div class="gallery">
+    <a href="{% static 'images/Django_cert.png' %}" class="certificate-link" data-lightbox="certificate">
+        <img src="{% static 'images/Django_cert.png' %}" alt="Certificate 1" class="certificate-img">
+    </a>
+    <a href="{% static 'images/VCS_Data_Science.png' %}" class="certificate-link" data-lightbox="certificate">
+        <img src="{% static 'images/VCS_Data_Science.png' %}" alt="Certificate 2" class="certificate-img">
+    </a>
+</div>
+{% endblock %}
