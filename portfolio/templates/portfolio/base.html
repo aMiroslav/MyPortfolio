@@ -4,29 +4,33 @@
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static 'style.css' %}?{% now "U" %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now "U" %}">
     <link rel="icon" href="{% static 'favicon.ico' %}">
     <title>Miroslav Adamaic - Portfolio</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'index' %}">Miroslav Adamaic</a>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+      <a style = "color:rgb(3, 160, 98)" class="navbar-brand" href="{% url 'index' %}">Miroslav Adamaic</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
+            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
+            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'about' %}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'certificates' %}">Certificates</a>
+            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'certificates' %}">Certificates</a>
+          </li>
+            </li>
+          <li class="nav-item">
+            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'cover-letter' %}">Cover letter</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="container mt-5">
+    <div>
       {% block content %}{% endblock %}
     </div>
     <div id="lightbox" class="lightbox">

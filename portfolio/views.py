@@ -9,3 +9,6 @@ def about(request):
 
 def certificates(request):
     return render(request, 'portfolio/certificates.html')
+
+def cover_letter(request):
+    return render(request, 'portfolio/cover_letter.html')
