@@ -2,69 +2,60 @@
 
 {% block content %}
     {% load static %}
-    <div class="jumbotron">
-        <h1 class="display-4 typewriter-text"></h1>
-        <p class="lead typewriter-text"></p>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <div id="typewriter">
+        <h1 class="display-4 typewriter-text">Welcome to My Portfolio.</h1>
+        <br>
+        <p class="lead typewriter-text">Hi, I'm Miroslav Adamaic. I am a keen learner transitioning into Data Science and IT.</p>
         <hr class="my-4">
-        <p class="typewriter-text"></p>
+        <p class="typewriter-text">Here you'll find information about my experience and skills.</p>
     </div>
-<style>
-               .typewriter-text {
-        font-family: 'Courier New', Courier, monospace; /* Optional: Use a monospaced font for typewriter effect */
-        white-space: nowrap; /* Optional: Prevent text from wrapping */
-        overflow: hidden; /* Optional: Hide overflow text */
-    }
 
-    .typewriter-text::after {
-        content: '|'; /* Create a cursor */
-        display: inline-block;
-        width: 0; /* Start with cursor hidden */
-        animation: blink-caret 1s step-end infinite;
-    }
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elements = document.querySelectorAll('.typewriter-text');
+        elements.forEach(function(el) {
+            var text = el.textContent.trim(); // Get the text content
+            el.textContent = ''; // Clear the element's content
 
-    @keyframes typewriter {
-        from { width: 0 }
-        to { width: 100% }
-    }
+            var cursor = document.createElement('span');
+            cursor.className = 'cursor'; // Apply CSS class for the cursor
+            cursor.textContent = '|'; // Cursor symbol
 
-    @keyframes blink-caret {
-        from, to { border-color: transparent }
-        50% { border-color: orange }
-    }
-    </style>
-    <script>
-        // JavaScript code (as shown above)
-        const elements = document.querySelectorAll('.typewriter-text'); // Select all elements with class 'typewriter-text'
+            el.appendChild(cursor);
 
-// Messages for each element
-const messages = [
-    "Welcome to My Portfolio.",
-    "Hi, I'm Miroslav Adamaic. I am a keen learner transitioning into Data Science and IT.",
-    "Here you'll find information about my experience and skills."
-];
+            var index = 0;
+            var lines = text.split('\n');
+            var currentLine = 0;
+            var typeSpeed = 100; // Adjust speed as needed
 
-function typeWriter(element, message, index, delay) {
-    setTimeout(() => {
-        let charIndex = 0;
-        const interval = setInterval(() => {
-            element.textContent += message[charIndex];
-            charIndex++;
-            // Check if we've reached the end of the message
-            if (charIndex === message.length) {
-                clearInterval(interval); // Stop typing when the end of message is reached
-                // Move to the next typewriter element
-                if (index < elements.length - 1) {
-                    setTimeout(() => {
-                        typeWriter(elements[index + 1], messages[index + 1], index + 1, delay);
-                    }, 500); // Adjust the delay before starting the next element
+            function typeLine() {
+                var line = lines[currentLine];
+                if (index <= line.length) {
+                    el.textContent = lines.slice(0, currentLine).join('\n') + line.substring(0, index);
+                    el.appendChild(cursor);
+                    index++;
+                    setTimeout(typeLine, typeSpeed);
+                } else {
+                    el.textContent = lines.slice(0, currentLine + 1).join('\n'); // Display full line
+                    el.appendChild(cursor);
+                    el.appendChild(document.createElement('br')); // Add line break
+                    currentLine++;
+                    index = 0;
+                    if (currentLine < lines.length) {
+                        setTimeout(typeLine, typeSpeed); // Type next line
+                    } else {
+                        cursor.style.display = 'none'; // Hide cursor when typing is complete
+                    }
                 }
             }
-        }, 50); // Adjust the speed of typing here (milliseconds per character)
-    }, delay); // Delay before starting typing (staggered effect)
-}
 
-// Start typing the first element
-typeWriter(elements[0], messages[0], 0, 200);
+            // Start typing animation
+            typeLine();
+        });
+    });
+</script>
 
-    </script>
+
 {% endblock %}

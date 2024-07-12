@@ -78,3 +78,23 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+ .typewriter-text {
+        display: inline-block; /* Ensure each line is treated as a block */
+        font-family: 'Courier New', Courier, monospace; /* Example font style */
+        color: rgb(3, 160, 98); /* Example text color */
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 0.5em; /* Adjust width to match the cursor symbol */
+        height: 1em; /* Adjust height to match line-height of text */
+        background-color: black; /* Cursor color */
+        animation: blink 0.7s infinite;
+        vertical-align: text-bottom;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
