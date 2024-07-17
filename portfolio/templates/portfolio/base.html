@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="{% static 'style.css' %}?{% now "U" %}">
     <link rel="icon" href="{% static 'favicon.ico' %}">
     <title>Miroslav Adamaic - Portfolio</title>
+      
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-      <a style = "color:rgb(3, 160, 98)" class="navbar-brand" href="{% url 'index' %}">Miroslav Adamaic</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'index' %}">Home</a>
+            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'index' %}">Miroslav Adamaic</a>
           </li>
           <li class="nav-item">
             <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'about' %}">About</a>
@@ -26,6 +26,9 @@
             </li>
           <li class="nav-item">
             <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'cover-letter' %}">Cover letter</a>
+          </li>
+            <li class="nav-item">
+            <a style = "color:rgb(3, 160, 98)" class="nav-link" href="{% url 'projects' %}">Projects</a>
           </li>
         </ul>
       </div>

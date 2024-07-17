@@ -12,3 +12,5 @@ def certificates(request):
 
 def cover_letter(request):
     return render(request, 'portfolio/cover_letter.html')
+def projects(request):
+    return render(request, 'portfolio/projects.html')

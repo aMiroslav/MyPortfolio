@@ -1,0 +1,42 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?{% now "U" %}">
+    <div class="container-wrapper">
+    <div class="container">
+        <h1>My Projects</h1>
+        <div class="project-grid" id="project-grid">
+            <div class="project-thumbnail" onclick="showProjectDetails(1)">
+                <img src="{% static 'images/Project1.png' %}" alt="Project 1" class="img-thumbnail">
+                <h3>This website</h3>
+            </div>
+            <div class="project-thumbnail" onclick="showProjectDetails(2)">
+                <img src="path/to/project2-thumbnail.jpg" alt="Project 2" class="img-thumbnail">
+                <h3>Real Estate Price Calculator</h3>
+            </div>
+            <div class="project-thumbnail" onclick="showProjectDetails(3)">
+                <img src="path/to/project3-thumbnail.jpg" alt="Project 3" class="img-thumbnail">
+                <h3>Sports Statistics Analysis</h3>
+            </div>
+            <div class="project-thumbnail" onclick="showProjectDetails(4)">
+                <img src="path/to/project4-thumbnail.jpg" alt="Project 4" class="img-thumbnail">
+                <h3>Business Document Segragator</h3>
+            </div>
+        </div>
+        <div id="project-details" class="mt-5" style="display: none;">
+            <button class="btn btn-primary" onclick="hideProjectDetails()">Back to Projects</button>
+            <h2 id="project-title"></h2>
+            <div id="project-description"></div>
+            <div id="project-images" class="row mt-3"></div>
+        </div>
+    </div>
+    </div>
+    <!-- Bootstrap JS and any other scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src={% static 'projects.js' %}></script>
+{% endblock %}

@@ -2,52 +2,91 @@ body {
     background-image: url('images/bacground.png');
     background-size: cover;
     background-position: center center;
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    background-attachment: fixed;
 }
 
 .container-wrapper {
     display: flex;
     justify-content: center; /* Center horizontally */
-    /*align-items: center; !* Center vertically *!*/
-    /*min-height: calc(100vh - 50px); !* Adjust to account for other content, like nav *!*/
-    /*min-width: calc(100vw - 50px);*/
-    padding-top: 5px; /* Adjust as needed for nav height */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Ensure the wrapper takes the full height of the viewport */
+    padding-top: 80px; /* Adjust as needed for nav height */
+    position: relative; /* Ensure z-index works as expected */
+    overflow-y: auto; /* Enable vertical scrolling for content */
 }
 
 .container {
     font-family: 'Courier New', Courier, monospace;
-    /*display: inline-block;*/
-    /*padding: 20px;*/
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
     color: rgb(3, 160, 98);
     box-sizing: border-box; /* Include padding in width calculation */
-    max-width: 800px;
+    max-width: 800px; /* You can adjust this as needed */
     width: 100%;
     margin: 0 auto;
     text-align: left;
+    padding: 20px;
+    position: relative; /* Ensure z-index works as expected */
 }
+
+.container-homepage {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    color: rgb(3, 160, 98);
+    box-sizing: border-box; /* Include padding in width calculation */
+    max-width: 850px; /* You can adjust this as needed */
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    position: relative; /* Ensure z-index works as expected */
+    height: 300px; /* Fixed height to prevent resizing */
+    overflow: hidden; /* Hide overflow to prevent scrollbar appearing */
+}
+
+.container-homepage h1 {
+    font-size: 3.51em; /* Adjust the font size as needed */
+}
+
 .container h1 {
     text-align: center;
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure navbar is above other content */
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    font-size: 1.35rem;
 }
 .navbar-custom {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
+    background-color: rgba(0, 0, 0, 0.7);
+}
 
+.navbar-custom .nav-link {
+    color: rgb(3, 160, 98);
+    transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+    margin-right: 20px;
+}
+
+.navbar-custom .nav-link:hover {
+    transform: scale(1.3); /* Enlarge the item by 30% on hover */
+}
 
 .gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
 }
 
 .gallery a {
@@ -72,12 +111,10 @@ body {
     display: none;
     position: fixed;
     z-index: 999;
-    left: 0;
-    top: 0;
+    top: 70px;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.6);
 }
 
 .lightbox-content {
@@ -104,25 +141,63 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
- .typewriter-text {
-        display: inline-block; /* Ensure each line is treated as a block */
-        font-family: 'Courier New', Courier, monospace; /* Example font style */
-        font-weight: bold;
-        color: rgb(3, 160, 98); /* Example text color */
-        visibility: hidden; /* Hide text from rendering before animation */
-    }
 
-    .cursor {
-        display: inline-block;
-        width: auto; /* Adjust width to match the cursor symbol */
-        height: auto; /* Adjust height to match line-height of text */
-        color: rgb(3, 160, 98); /* Cursor color */
-        animation: blink 0.5s infinite;
-        vertical-align: center;
-    }
+.typewriter-text {
+    display: inline-block; /* Ensure each line is treated as a block */
+    font-family: 'Courier New', Courier, monospace; /* Example font style */
+    font-weight: bold;
+    color: rgb(3, 160, 98); /* Example text color */
+    visibility: hidden; /* Hide text from rendering before animation */
+}
 
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0; }
-        100% { opacity: 1; }
-    }
+.cursor {
+    display: inline-block;
+    width: auto; /* Adjust width to match the cursor symbol */
+    height: auto; /* Adjust height to match line-height of text */
+    color: rgb(3, 160, 98); /* Cursor color */
+    animation: blink 0.5s infinite;
+    vertical-align: center;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between items */
+    justify-content: center; /* Center items if there is extra space */
+    padding: 20px 0;
+}
+
+.project-thumbnail {
+    cursor: pointer;
+    text-align: center;
+    flex: 1 1 calc(25% - 40px); /* Adjust width to fit four items per row */
+    box-sizing: border-box; /* Include padding and border in element's width */
+    margin-bottom: 20px;
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.project-thumbnail img:hover {
+    border-color: #777;
+}
+
+#project-images img {
+    margin-bottom: 15px;
+}
+
+.button .btn .btn-primary{
+    background-color: transparent;
+}
