@@ -5,7 +5,7 @@ body {
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
-    /*min-height: 100vh;*/
+    min-height: 100vh;
     overflow-x: hidden; /* Hide horizontal scrollbar */
     background-attachment: fixed;
 }
@@ -76,10 +76,11 @@ body {
     color: rgb(3, 160, 98);
     transition: transform 0.3s ease-in-out; /* Smooth transition effect */
     margin-right: 20px;
+    margin-left: 25px;
 }
 
 .navbar-custom .nav-link:hover {
-    transform: scale(1.3); /* Enlarge the item by 30% on hover */
+    transform: scale(1.4); /* Enlarge the item by 30% on hover */
 }
 
 .gallery {
@@ -184,14 +185,18 @@ body {
 .project-thumbnail img {
     width: 100%;
     height: auto;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
+    border-style: ridge; /* Ensure solid border style */
+    border-color: rgb(3, 160, 98);
+    padding: 0px;
     transition: 0.3s;
+    outline: none; /* Remove default browser outline */
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .project-thumbnail img:hover {
-    border-color: #777;
+    border-color: rgb(3, 160, 98);
+    transform: scale(1.3);
 }
 
 #project-images img {
@@ -200,4 +205,33 @@ body {
 
 .button .btn .btn-primary{
     background-color: transparent;
+}
+
+.fields-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px); /* Adjust the height to fit the viewport minus the navbar height */
+    overflow: hidden;
+    margin-top: 80px; /* Ensure it starts below the navbar */
+}
+
+.field {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: rgb(3, 160, 98);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px; /* Add some padding for better appearance */
+    border-radius: 5px;
+    opacity: 0;
+    transition: transform 0.3s;
+}
+
+.field.appear {
+    opacity: 1; /* Fade in */
+    transition: opacity 0.5s; /* Smooth transition for fading in */
+}
+
+.field:hover {
+    transform: scale(1.4) ;
 }

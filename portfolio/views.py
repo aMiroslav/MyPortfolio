@@ -14,3 +14,6 @@ def cover_letter(request):
     return render(request, 'portfolio/cover_letter.html')
 def projects(request):
     return render(request, 'portfolio/projects.html')
+
+def fields_of_interest(request):
+    return render(request, 'portfolio/fields_of_interest.html')
